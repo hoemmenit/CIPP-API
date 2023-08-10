@@ -15,11 +15,11 @@ try {
     Write-Host $Filter
     $ClearRow = Get-AzDataTableEntity @Table -Filter $Filter
     Remove-AzDataTableEntity @Table -Entity $clearRow
-    Write-LogMessage -user $request.headers.'x-ms-client-principal'  -API $APINAME  -message "Removed Intune Template with ID $ID." -Sev "Info"
+    Write-LogMessage -user $request.headers.'x-ms-client-principal'  -API $APINAME  -message "Removed group template with ID $ID." -Sev "Info"
     $body = [pscustomobject]@{"Results" = "Successfully removed Template" }
 }
 catch {
-    Write-LogMessage -user $request.headers.'x-ms-client-principal'  -API $APINAME  -message "Failed to remove intune template $ID. $($_.Exception.Message)" -Sev "Error"
+    Write-LogMessage -user $request.headers.'x-ms-client-principal'  -API $APINAME  -message "Failed to remove group template $ID. $($_.Exception.Message)" -Sev "Error"
     $body = [pscustomobject]@{"Results" = "Failed to remove template: $($_.Exception.Message)" }
 }
 
